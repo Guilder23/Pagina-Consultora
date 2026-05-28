@@ -6,6 +6,7 @@ const overlay = document.getElementById("sidebarOverlay");
 const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
 const contactBtn = document.getElementById("contactBtn");
 const desktopNavLinks = document.querySelectorAll(".desktop-nav a");
+const faqAccordion = document.getElementById("faqAccordion");
 
 // Funciones de menú móvil
 function openSidebar() {
@@ -126,6 +127,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// FAQ tipo acordeón: solo una respuesta abierta a la vez
+if (faqAccordion) {
+    const faqItems = [...faqAccordion.querySelectorAll('.faq-item')];
+
+    const closeItem = (item) => {
+        const button = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        item.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+        answer.hidden = true;
+    };
+
+    const openItem = (item) => {
+        const button = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        item.classList.add('is-open');
+        button.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+    };
+
+    faqItems.forEach((item) => {
+        const button = item.querySelector('.faq-question');
+
+        button.addEventListener('click', () => {
+            const isOpen = item.classList.contains('is-open');
+
+            faqItems.forEach(closeItem);
+
+            if (!isOpen) {
+                openItem(item);
+            }
+        });
+    });
+}
 
 // Inicialización
 console.log("Consultora Empresarial - Sitio Web Cargado");
