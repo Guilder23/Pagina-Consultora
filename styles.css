@@ -1133,10 +1133,6 @@ main {
     font-weight: 700;
 }
 
-.whatsapp-float span:last-child {
-    display: none;
-}
-
 .whatsapp-float:hover {
     transform: translateY(-2px);
     color: #ffffff;
@@ -1154,6 +1150,10 @@ main {
     height: 100%;
     fill: currentColor;
     display: block;
+}
+
+.whatsapp-float-icon svg path {
+    fill: #ffffff;
 }
 
 .testimonios {
@@ -1735,12 +1735,37 @@ footer a:hover {
     }
 
     .servicios-carousel {
+        display: block;
         padding: 4px 0 10px;
     }
 
     .servicios-carousel .service-card {
         border-radius: 20px;
         flex-basis: 100%;
+    }
+
+    .servicios-carousel .servicios-grid {
+        display: flex;
+        grid-column: auto;
+        gap: 18px;
+        width: 100%;
+    }
+
+    .servicios-carousel .servicios-prev,
+    .servicios-carousel .servicios-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 38px;
+        height: 38px;
+    }
+
+    .servicios-carousel .servicios-prev {
+        left: 8px;
+    }
+
+    .servicios-carousel .servicios-next {
+        right: 8px;
     }
 
     .caso-image {
