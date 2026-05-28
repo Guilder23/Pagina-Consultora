@@ -488,3 +488,20 @@ if (contactForm) {
 
 // Inicialización
 console.log("Consultora Empresarial - Sitio Web Cargado");
+
+// Navbar sticky: compactar al hacer scroll, mantener siempre visible (fijo)
+(function () {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    const onScrollSimple = () => {
+        const sc = window.scrollY || document.documentElement.scrollTop;
+        if (sc > 60) header.classList.add('is-stuck'); else header.classList.remove('is-stuck');
+        // asegurar visible
+        header.classList.remove('is-hidden');
+    };
+
+    window.addEventListener('scroll', onScrollSimple, { passive: true });
+    document.addEventListener('DOMContentLoaded', onScrollSimple);
+    onScrollSimple();
+})();
