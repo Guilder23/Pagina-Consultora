@@ -7,6 +7,18 @@ const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
 const contactBtn = document.getElementById("contactBtn");
 const desktopNavLinks = document.querySelectorAll(".desktop-nav a");
 const faqAccordion = document.getElementById("faqAccordion");
+const casosTrack = document.getElementById("casosTrack");
+const casosPrev = document.querySelector(".casos-prev");
+const casosNext = document.querySelector(".casos-next");
+
+const casosCarouselState = {
+    originalCount: 0,
+    cloneCount: 0,
+    step: 0,
+    index: 0,
+    isMoving: false,
+    resizeTimer: null,
+};
 
 // Funciones de menú móvil
 function openSidebar() {
@@ -162,6 +174,130 @@ if (faqAccordion) {
                 openItem(item);
             }
         });
+    });
+}
+
+if (casosTrack && casosPrev && casosNext) {
+    const getVisibleCardsCount = () => (window.matchMedia("(max-width: 768px)").matches ? 1 : 3);
+
+    const getOriginalCards = () => Array.from(casosTrack.querySelectorAll(".caso-card")).filter((card) => card.dataset.caseClone !== "true");
+
+    const measureStep = () => {
+        const firstCard = casosTrack.querySelector(".caso-card");
+        if (!firstCard) {
+            return 0;
+        }
+
+        const cardWidth = firstCard.getBoundingClientRect().width;
+        const trackStyles = window.getComputedStyle(casosTrack);
+        const gap = parseFloat(trackStyles.gap || "0") || 0;
+
+        return cardWidth + gap;
+    };
+
+    const applyTransform = (animate = true) => {
+        casosTrack.style.transition = animate ? "transform 0.28s ease" : "none";
+        casosTrack.style.transform = `translate3d(${-casosCarouselState.index * casosCarouselState.step}px, 0, 0)`;
+    };
+
+    const refreshCasesNav = () => {
+        casosPrev.disabled = false;
+        casosNext.disabled = false;
+    };
+
+    const rebuildCasesCarousel = () => {
+        const originals = getOriginalCards();
+
+        casosTrack.querySelectorAll('[data-case-clone="true"]').forEach((card) => card.remove());
+
+        if (!originals.length) {
+            return;
+        }
+
+        casosCarouselState.originalCount = originals.length;
+        casosCarouselState.cloneCount = Math.min(getVisibleCardsCount(), originals.length);
+
+        const firstOriginal = originals[0];
+        const prependClones = originals.slice(-casosCarouselState.cloneCount).map((card) => {
+            const clone = card.cloneNode(true);
+            clone.dataset.caseClone = "true";
+            clone.setAttribute("aria-hidden", "true");
+            clone.style.opacity = "1";
+            clone.style.transform = "none";
+            clone.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            return clone;
+        });
+
+        const appendClones = originals.slice(0, casosCarouselState.cloneCount).map((card) => {
+            const clone = card.cloneNode(true);
+            clone.dataset.caseClone = "true";
+            clone.setAttribute("aria-hidden", "true");
+            clone.style.opacity = "1";
+            clone.style.transform = "none";
+            clone.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            return clone;
+        });
+
+        prependClones.reverse().forEach((clone) => {
+            casosTrack.insertBefore(clone, firstOriginal);
+        });
+
+        appendClones.forEach((clone) => {
+            casosTrack.appendChild(clone);
+        });
+
+        casosCarouselState.step = measureStep();
+        casosCarouselState.index = casosCarouselState.cloneCount;
+        applyTransform(false);
+        refreshCasesNav();
+    };
+
+    const normalizeCasesCarousel = () => {
+        const minIndex = casosCarouselState.cloneCount;
+        const maxIndex = casosCarouselState.cloneCount + casosCarouselState.originalCount - 1;
+
+        if (casosCarouselState.index > maxIndex) {
+            casosCarouselState.index = minIndex;
+            applyTransform(false);
+        } else if (casosCarouselState.index < minIndex) {
+            casosCarouselState.index = maxIndex;
+            applyTransform(false);
+        }
+
+        casosCarouselState.isMoving = false;
+    };
+
+    const moveCasesCarousel = (direction) => {
+        if (casosCarouselState.isMoving || !casosCarouselState.step) {
+            return;
+        }
+
+        casosCarouselState.isMoving = true;
+        casosCarouselState.index += direction;
+        applyTransform(true);
+
+        window.setTimeout(normalizeCasesCarousel, 300);
+    };
+
+    window.scrollCases = (direction) => {
+        moveCasesCarousel(direction);
+    };
+
+    casosPrev.addEventListener("click", () => {
+        moveCasesCarousel(-1);
+    });
+
+    casosNext.addEventListener("click", () => {
+        moveCasesCarousel(1);
+    });
+
+    rebuildCasesCarousel();
+
+    window.addEventListener("resize", () => {
+        window.clearTimeout(casosCarouselState.resizeTimer);
+        casosCarouselState.resizeTimer = window.setTimeout(() => {
+            rebuildCasesCarousel();
+        }, 120);
     });
 }
 

@@ -228,10 +228,15 @@
                 <h2>Proyectos Realizados</h2>
             </div>
 
-            <div class="casos-grid">
+            <div class="casos-carousel" aria-label="Carrusel de proyectos realizados">
+                <button class="casos-nav casos-prev" type="button" aria-label="Ver proyectos anteriores" onclick="scrollCases(-1)">
+                    <span aria-hidden="true">‹</span>
+                </button>
+
+                <div class="casos-grid" id="casosTrack">
                 <article class="caso-card">
                     <div class="caso-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab684c3c1?q=80&w=600&auto=format&fit=crop" alt="Caso: Empresa Manufacturera">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop" alt="Caso: Empresa Manufacturera">
                     </div>
                     <div class="caso-content">
                         <h3>Optimización de Procesos Manufactureros</h3>
@@ -276,6 +281,59 @@
                         </div>
                     </div>
                 </article>
+
+                <article class="caso-card">
+                    <div class="caso-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" alt="Caso: Control Financiero">
+                    </div>
+                    <div class="caso-content">
+                        <h3>Control Financiero y Tablero Gerencial</h3>
+                        <p class="caso-industry">Industria de Servicios</p>
+                        <p>Diseñamos reportes ejecutivos y controles de gestión que mejoraron la visibilidad financiera y la toma de decisiones.</p>
+                        <div class="caso-metrics">
+                            <span>+60% Visibilidad</span>
+                            <span>-25% Desvíos</span>
+                            <span>3 meses</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="caso-card">
+                    <div class="caso-image">
+                        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=600&auto=format&fit=crop" alt="Caso: Gestión de Talento">
+                    </div>
+                    <div class="caso-content">
+                        <h3>Gestión de Talento y Estructura Organizacional</h3>
+                        <p class="caso-industry">Retail y Consumo Masivo</p>
+                        <p>Redefinimos funciones, procesos de selección y seguimiento de desempeño para elevar la productividad del equipo.</p>
+                        <div class="caso-metrics">
+                            <span>+28% Productividad</span>
+                            <span>-18% Rotación</span>
+                            <span>5 meses</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="caso-card">
+                    <div class="caso-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop" alt="Caso: Normalización Societaria">
+                    </div>
+                    <div class="caso-content">
+                        <h3>Normalización Societaria y Cumplimiento</h3>
+                        <p class="caso-industry">Empresas en Crecimiento</p>
+                        <p>Regularizamos documentación, contratos y estructura legal para reducir contingencias y ordenar la operación empresarial.</p>
+                        <div class="caso-metrics">
+                            <span>100% Orden</span>
+                            <span>-50% Riesgos</span>
+                            <span>2 meses</span>
+                        </div>
+                    </div>
+                </article>
+                </div>
+
+                <button class="casos-nav casos-next" type="button" aria-label="Ver siguientes proyectos" onclick="scrollCases(1)">
+                    <span aria-hidden="true">›</span>
+                </button>
             </div>
         </section>
 
