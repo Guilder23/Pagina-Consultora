@@ -29,6 +29,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -781,6 +782,17 @@ main {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
+/* Evitar que la sección servicios crezca fuera del contenedor central */
+.servicios {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.servicios-carousel {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 .casos .section-header {
     margin-bottom: 36px;
 }
@@ -798,6 +810,28 @@ main {
     overflow: hidden;
     padding: 4px 56px 12px;
 }
+
+/* Carrusel para la sección "Nuestros Servicios" (comportamiento igual a .casos) */
+.servicios-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 4px 56px 12px;
+}
+
+.servicios-carousel .servicios-grid {
+    display: flex;
+    gap: 24px;
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.28s ease;
+    will-change: transform;
+    padding: 0;
+}
+
+.servicios-carousel .service-card {
+    flex: 0 0 calc((100% - 48px) / 3);
+}
+
+
 
 .casos-grid {
     display: flex;
@@ -825,12 +859,18 @@ main {
     place-items: center;
     cursor: pointer;
     color: var(--gris-pizarra);
-    background: transparent;
+    background: var(--dorado-arena);
     border: 0;
-    box-shadow: none;
+    box-shadow: 0 10px 30px rgba(200,154,58,0.18);
     backdrop-filter: none;
+    color: #ffffff;
     transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
     pointer-events: auto;
+}
+
+/* Asegurar controles visibles y clicables sobre tracks flexibles */
+.servicios-carousel .casos-nav {
+    z-index: 40;
 }
 
 .casos-nav span {
@@ -852,11 +892,11 @@ main {
 }
 
 .casos-prev {
-    left: -10px;
+    left: 12px;
 }
 
 .casos-next {
-    right: -10px;
+    right: 12px;
 }
 
 .caso-card {
@@ -1653,15 +1693,24 @@ footer a:hover {
     }
 
     .casos-prev {
-        left: -4px;
+        left: 8px;
     }
 
     .casos-next {
-        right: -4px;
+        right: 8px;
     }
 
     .servicios-grid {
         gap: 18px;
+    }
+
+    .servicios-carousel {
+        padding: 4px 0 10px;
+    }
+
+    .servicios-carousel .service-card {
+        border-radius: 20px;
+        flex-basis: 100%;
     }
 
     .caso-image {

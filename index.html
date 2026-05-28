@@ -136,44 +136,54 @@
                 <p class="section-subtitle">Soluciones multidisciplinarias en legal, contable y talento humano.</p>
             </div>
 
-            <div class="servicios-grid">
-                <article class="service-card">
-                    <div class="service-media">
-                        <img src="img/areaLegal.png" alt="Área legal y corporativa">
-                    </div>
-                    <h3>I. Área Legal y Corporativa</h3>
-                    <p><strong>Descripción:</strong> Seguridad jurídica integral y blindaje patrimonial para garantizar la expansión de sus negocios.</p>
-                    <p><strong>Soluciones:</strong> Constitución y reorganización societaria (SEPREC), redacción y auditoría de contratos, asesoría laboral preventiva y patrocinio en litigios comerciales.</p>
-                    <p><strong>Beneficio:</strong> Evita pasivos legales y asegura que cada paso de su empresa esté respaldado por la normativa boliviana vigente.</p>
-                </article>
+            <div class="servicios-carousel" aria-label="Carrusel de servicios">
+                <button class="casos-nav servicios-prev" type="button" aria-label="Ver servicios anteriores" onclick="scrollServicios(-1)">
+                    <span aria-hidden="true">‹</span>
+                </button>
 
-                <article class="service-card">
-                    <div class="service-media">
-                        <img src="img/areaContable.png" alt="Área contable y tributaria">
-                    </div>
-                    <h3>II. Área Contable y Tributaria</h3>
-                    <p><strong>Descripción:</strong> Ingeniería financiera y control de gestión para maximizar su rentabilidad y asegurar el cumplimiento impositivo.</p>
-                    <p><strong>Soluciones:</strong> Outsourcing contable, estrategia tributaria ante el SIN, y auditorías financieras o peritajes forenses.</p>
-                    <p><strong>Beneficio:</strong> Claridad absoluta en sus números, toma de decisiones basada en datos reales y eliminación de riesgos de multas estatales.</p>
-                </article>
+                <div class="servicios-grid" id="serviciosTrack">
+                    <article class="service-card">
+                        <div class="service-media">
+                            <img src="img/areaLegal.png" alt="Área legal y corporativa">
+                        </div>
+                        <h3>I. Área Legal y Corporativa</h3>
+                        <p><strong>Descripción:</strong> Seguridad jurídica integral y blindaje patrimonial para garantizar la expansión de sus negocios.</p>
+                        <p><strong>Soluciones:</strong> Constitución y reorganización societaria (SEPREC), redacción y auditoría de contratos, asesoría laboral preventiva y patrocinio en litigios comerciales.</p>
+                        <p><strong>Beneficio:</strong> Evita pasivos legales y asegura que cada paso de su empresa esté respaldado por la normativa boliviana vigente.</p>
+                    </article>
 
-                <article class="service-card">
-                    <div class="service-media">
-                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Gestión del talento humano">
-                    </div>
-                    <h3>III. Gestión del Talento Humano (GTH)</h3>
-                    <p><strong>Descripción:</strong> Alineamos el comportamiento organizacional con los objetivos de rentabilidad y mitigamos riesgos laborales.</p>
-                    <p><strong>Soluciones:</strong> Psicología organizacional (clima laboral), Headhunting ejecutivo, estructuración de manuales de funciones (MOF) y externalización de planillas de sueldos.</p>
-                    <p><strong>Beneficio:</strong> Retención de talento clave, equipos de alto rendimiento y cero contingencias ante el Ministerio de Trabajo.</p>
-                </article>
+                    <article class="service-card">
+                        <div class="service-media">
+                            <img src="img/areaContable.png" alt="Área contable y tributaria">
+                        </div>
+                        <h3>II. Área Contable y Tributaria</h3>
+                        <p><strong>Descripción:</strong> Ingeniería financiera y control de gestión para maximizar su rentabilidad y asegurar el cumplimiento impositivo.</p>
+                        <p><strong>Soluciones:</strong> Outsourcing contable, estrategia tributaria ante el SIN, y auditorías financieras o peritajes forenses.</p>
+                        <p><strong>Beneficio:</strong> Claridad absoluta en sus números, toma de decisiones basada en datos reales y eliminación de riesgos de multas estatales.</p>
+                    </article>
 
-                <article class="service-card">
-                    <div class="service-media">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop" alt="Servicios integrados multidisciplinarios">
-                    </div>
-                    <h3>IV. Servicios Integrados</h3>
-                    <p>Auditoría preventiva multidisciplinaria simultánea (Legal, Contable y RRHH) ideal para fusiones, adquisiciones o control de gestión. Externalización y sincronización de gerencias en la nube.</p>
-                </article>
+                    <article class="service-card">
+                        <div class="service-media">
+                            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop" alt="Gestión del talento humano">
+                        </div>
+                        <h3>III. Gestión del Talento Humano (GTH)</h3>
+                        <p><strong>Descripción:</strong> Alineamos el comportamiento organizacional con los objetivos de rentabilidad y mitigamos riesgos laborales.</p>
+                        <p><strong>Soluciones:</strong> Psicología organizacional (clima laboral), Headhunting ejecutivo, estructuración de manuales de funciones (MOF) y externalización de planillas de sueldos.</p>
+                        <p><strong>Beneficio:</strong> Retención de talento clave, equipos de alto rendimiento y cero contingencias ante el Ministerio de Trabajo.</p>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-media">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop" alt="Servicios integrados multidisciplinarios">
+                        </div>
+                        <h3>IV. Servicios Integrados</h3>
+                        <p>Auditoría preventiva multidisciplinaria simultánea (Legal, Contable y RRHH) ideal para fusiones, adquisiciones o control de gestión. Externalización y sincronización de gerencias en la nube.</p>
+                    </article>
+                </div>
+
+                <button class="casos-nav servicios-next" type="button" aria-label="Ver siguientes servicios" onclick="scrollServicios(1)">
+                    <span aria-hidden="true">›</span>
+                </button>
             </div>
         </section>
 

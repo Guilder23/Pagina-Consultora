@@ -302,6 +302,166 @@ if (casosTrack && casosPrev && casosNext) {
     });
 }
 
+// Carrusel para 'Nuestros Servicios' (misma lógica que 'casos')
+const serviciosTrack = document.getElementById("serviciosTrack");
+const serviciosPrev = document.querySelector(".servicios-prev");
+const serviciosNext = document.querySelector(".servicios-next");
+
+const serviciosCarouselState = {
+    originalCount: 0,
+    cloneCount: 0,
+    step: 0,
+    index: 0,
+    isMoving: false,
+    resizeTimer: null,
+    autoplayInterval: 5000,
+    autoplayTimer: null,
+};
+
+if (serviciosTrack && serviciosPrev && serviciosNext) {
+    const getVisibleCardsCountS = () => (window.matchMedia("(max-width: 768px)").matches ? 1 : 3);
+
+    const getOriginalCardsS = () => Array.from(serviciosTrack.querySelectorAll(".service-card")).filter((card) => card.dataset.serviceClone !== "true");
+
+    const measureStepS = () => {
+        const firstCard = serviciosTrack.querySelector(".service-card");
+        if (!firstCard) return 0;
+        const cardWidth = firstCard.getBoundingClientRect().width;
+        const trackStyles = window.getComputedStyle(serviciosTrack);
+        const gap = parseFloat(trackStyles.gap || "0") || 0;
+        return cardWidth + gap;
+    };
+
+    const applyTransformS = (animate = true) => {
+        serviciosTrack.style.transition = animate ? "transform 0.28s ease" : "none";
+        serviciosTrack.style.transform = `translate3d(${-serviciosCarouselState.index * serviciosCarouselState.step}px, 0, 0)`;
+    };
+
+    const refreshServiciosNav = () => {
+        serviciosPrev.disabled = false;
+        serviciosNext.disabled = false;
+    };
+
+    const rebuildServiciosCarousel = () => {
+        const originals = getOriginalCardsS();
+
+        serviciosTrack.querySelectorAll('[data-service-clone="true"]').forEach((card) => card.remove());
+
+        if (!originals.length) return;
+
+        serviciosCarouselState.originalCount = originals.length;
+        serviciosCarouselState.cloneCount = Math.min(getVisibleCardsCountS(), originals.length);
+
+        const firstOriginal = originals[0];
+        const prependClones = originals.slice(-serviciosCarouselState.cloneCount).map((card) => {
+            const clone = card.cloneNode(true);
+            clone.dataset.serviceClone = "true";
+            clone.setAttribute("aria-hidden", "true");
+            clone.style.opacity = "1";
+            clone.style.transform = "none";
+            clone.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            return clone;
+        });
+
+        const appendClones = originals.slice(0, serviciosCarouselState.cloneCount).map((card) => {
+            const clone = card.cloneNode(true);
+            clone.dataset.serviceClone = "true";
+            clone.setAttribute("aria-hidden", "true");
+            clone.style.opacity = "1";
+            clone.style.transform = "none";
+            clone.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            return clone;
+        });
+
+        prependClones.reverse().forEach((clone) => {
+            serviciosTrack.insertBefore(clone, firstOriginal);
+        });
+
+        appendClones.forEach((clone) => {
+            serviciosTrack.appendChild(clone);
+        });
+
+        serviciosCarouselState.step = measureStepS();
+        serviciosCarouselState.index = serviciosCarouselState.cloneCount;
+        applyTransformS(false);
+        refreshServiciosNav();
+    };
+
+    const normalizeServiciosCarousel = () => {
+        const minIndex = serviciosCarouselState.cloneCount;
+        const maxIndex = serviciosCarouselState.cloneCount + serviciosCarouselState.originalCount - 1;
+
+        if (serviciosCarouselState.index > maxIndex) {
+            serviciosCarouselState.index = minIndex;
+            applyTransformS(false);
+        } else if (serviciosCarouselState.index < minIndex) {
+            serviciosCarouselState.index = maxIndex;
+            applyTransformS(false);
+        }
+
+        serviciosCarouselState.isMoving = false;
+    };
+
+    const moveServiciosCarousel = (direction) => {
+        if (serviciosCarouselState.isMoving || !serviciosCarouselState.step) return;
+        serviciosCarouselState.isMoving = true;
+        serviciosCarouselState.index += direction;
+        applyTransformS(true);
+        window.setTimeout(normalizeServiciosCarousel, 300);
+    };
+
+    window.scrollServicios = (direction) => {
+        moveServiciosCarousel(direction);
+    };
+
+    serviciosPrev.addEventListener("click", () => moveServiciosCarousel(-1));
+    serviciosNext.addEventListener("click", () => moveServiciosCarousel(1));
+
+    rebuildServiciosCarousel();
+
+    // Autoplay: avanza cada 5 segundos. Pausa en hover/visibilidad.
+    const startServiciosAutoplay = () => {
+        stopServiciosAutoplay();
+        serviciosCarouselState.autoplayTimer = setInterval(() => {
+            if (!document.hidden) moveServiciosCarousel(1);
+        }, serviciosCarouselState.autoplayInterval);
+    };
+
+    const stopServiciosAutoplay = () => {
+        if (serviciosCarouselState.autoplayTimer) {
+            clearInterval(serviciosCarouselState.autoplayTimer);
+            serviciosCarouselState.autoplayTimer = null;
+        }
+    };
+
+    const serviciosContainer = document.querySelector('.servicios-carousel');
+    if (serviciosContainer) {
+        serviciosContainer.addEventListener('mouseenter', stopServiciosAutoplay);
+        serviciosContainer.addEventListener('mouseleave', startServiciosAutoplay);
+        // on touch interactions stop briefly
+        serviciosContainer.addEventListener('touchstart', stopServiciosAutoplay, {passive: true});
+        serviciosContainer.addEventListener('touchend', () => setTimeout(startServiciosAutoplay, 1200));
+    }
+
+    // Reiniciar autoplay tras interacción manual
+    serviciosPrev.addEventListener('click', () => { stopServiciosAutoplay(); setTimeout(startServiciosAutoplay, serviciosCarouselState.autoplayInterval); });
+    serviciosNext.addEventListener('click', () => { stopServiciosAutoplay(); setTimeout(startServiciosAutoplay, serviciosCarouselState.autoplayInterval); });
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopServiciosAutoplay(); else startServiciosAutoplay();
+    });
+
+    // Iniciar autoplay
+    startServiciosAutoplay();
+
+    window.addEventListener("resize", () => {
+        window.clearTimeout(serviciosCarouselState.resizeTimer);
+        serviciosCarouselState.resizeTimer = window.setTimeout(() => {
+            rebuildServiciosCarousel();
+        }, 120);
+    });
+}
+
 if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
         event.preventDefault();
