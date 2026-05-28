@@ -814,17 +814,39 @@ main {
 /* Carrusel para la sección "Nuestros Servicios" (comportamiento igual a .casos) */
 .servicios-carousel {
     position: relative;
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+    align-items: center;
+    gap: 12px;
     overflow: hidden;
-    padding: 4px 56px 12px;
+    padding: 4px 0 12px;
 }
 
 .servicios-carousel .servicios-grid {
+    grid-column: 2;
     display: flex;
     gap: 24px;
     transform: translate3d(0, 0, 0);
     transition: transform 0.28s ease;
     will-change: transform;
     padding: 0;
+}
+
+.servicios-carousel .servicios-prev,
+.servicios-carousel .servicios-next {
+    position: static;
+    transform: none;
+    width: 52px;
+    height: 52px;
+    z-index: 3;
+}
+
+.servicios-carousel .servicios-prev {
+    grid-column: 1;
+}
+
+.servicios-carousel .servicios-next {
+    grid-column: 3;
 }
 
 .servicios-carousel .service-card {
@@ -880,9 +902,16 @@ main {
 }
 
 .casos-nav:hover {
-    background: transparent;
-    opacity: 0.7;
-    transform: translateY(-50%) scale(1.03);
+    background: #b8861a;
+    opacity: 1;
+    color: #ffffff;
+    box-shadow: 0 12px 34px rgba(184, 134, 26, 0.28);
+    transform: translateY(-50%) scale(1.06);
+}
+
+.casos-nav:focus-visible {
+    outline: 3px solid rgba(200, 154, 58, 0.35);
+    outline-offset: 3px;
 }
 
 .casos-nav:disabled {
@@ -1114,8 +1143,8 @@ main {
 }
 
 .whatsapp-float-icon {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
     display: grid;
     place-items: center;
 }
@@ -1124,6 +1153,7 @@ main {
     width: 100%;
     height: 100%;
     fill: currentColor;
+    display: block;
 }
 
 .testimonios {
