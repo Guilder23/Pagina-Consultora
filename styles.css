@@ -559,8 +559,8 @@ main {
 }
 
 .nosotros {
-    margin: 40px 0;
-    padding: 36px;
+    margin: 32px 0;
+    padding: 24px;
     background: var(--white);
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.04);
@@ -568,10 +568,10 @@ main {
 
 .nosotros-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    padding: 24px;
+    grid-template-columns: 1fr minmax(280px, 380px);
+    gap: 24px;
+    align-items: start;
+    padding: 16px;
 }
 
 .nosotros-copy {
@@ -594,12 +594,15 @@ main {
 
 .mission-vision-grid {
     display: grid;
-    gap: 16px;
-    margin-top: 8px;
+    gap: 14px;
+    margin-top: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column: 1 / -1;
+    align-items: start;
 }
 
 .highlight-card {
-    padding: 22px 24px;
+    padding: 20px 20px;
     border-radius: 14px;
     border: 1px solid rgba(83, 86, 90, 0.12);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
@@ -657,6 +660,21 @@ main {
     width: 100%;
     border-radius: 12px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.nosotros-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nosotros-visual img {
+    width: 100%;
+    max-width: 340px;
+    height: clamp(380px, 45vh, 520px);
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 .faq-layout {
@@ -1381,9 +1399,9 @@ footer a:hover {
     }
 
     .mission-vision-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
         gap: 12px;
-        margin-top: 6px;
+        margin-top: 12px;
     }
 
     .highlight-card {
@@ -1396,9 +1414,9 @@ footer a:hover {
         margin-bottom: 8px;
     }
 
-    .highlight-card p {
-        font-size: 0.88rem;
-        line-height: 1.45;
+    .highlight-card {
+        padding: 14px 16px;
+        border-radius: 12px;
     }
 
     .nosotros-content img {
