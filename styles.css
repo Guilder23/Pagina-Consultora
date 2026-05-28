@@ -1127,7 +1127,50 @@ footer a:hover {
 
     .nosotros-content {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 18px;
+        padding: 0;
+    }
+
+    .nosotros {
+        padding: 18px 14px;
+        margin: 28px 0;
+    }
+
+    .nosotros-content h2 {
+        font-size: 2rem;
+        margin: 8px 0 14px;
+    }
+
+    .nosotros-content p {
+        font-size: 0.96rem;
+        line-height: 1.55;
+        margin-bottom: 12px;
+    }
+
+    .mission-vision-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 6px;
+    }
+
+    .highlight-card {
+        padding: 14px 14px 16px;
+        border-radius: 12px;
+    }
+
+    .highlight-card h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .highlight-card p {
+        font-size: 0.88rem;
+        line-height: 1.45;
+    }
+
+    .nosotros-content img {
+        max-height: 220px;
+        object-fit: cover;
     }
 
     .nosotros-values {
