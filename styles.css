@@ -1,14 +1,24 @@
 :root {
-    --bg: #f8f9fb;
-    --bg-dark: #ffffff;
-    --card: rgba(255, 255, 255, 0.95);
-    --line: rgba(0, 0, 0, 0.08);
-    --text: #1a2332;
-    --muted: #6b7c99;
-    --primary: #0066cc;
-    --primary-dark: #004499;
-    --secondary: #00b4d8;
-    --accent: #ff6b6b;
+    /* Paleta proporcionada por el cliente */
+    --white: #FFFFFF;
+    --light-1: #D0D0CE; /* #DoDoCE aproximado */
+    --light-2: #B1B3B3;
+    --mid-gray: #888B8D;
+    --gris-pizarra: #53565A;
+    --black: #000000;
+
+    /* Mapear variables usadas en la hoja de estilos */
+    --bg: var(--light-1);
+    --bg-dark: var(--white);
+    --card: rgba(255,255,255,0.95);
+    --line: rgba(0,0,0,0.06);
+    --text: var(--gris-pizarra);
+    --muted: var(--mid-gray);
+    --primary: var(--gris-pizarra);
+    --primary-dark: #3f4245;
+    --secondary: var(--light-2);
+    --accent: #c89a3a; /* dorado arena */
+    --dorado-arena: #c89a3a;
 }
 
 * {
@@ -23,9 +33,9 @@ html {
 
 body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8f9fb 0%, #eff3f8 100%);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-dark) 100%);
     color: var(--text);
-    font-family: "Poppins", sans-serif;
+    font-family: "Merriweather", serif;
     padding: 0 0 60px;
     overflow-x: hidden;
 }
@@ -89,15 +99,17 @@ body {
 }
 
 .logo-text strong {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.6px;
+    font-family: "Cinzel", serif;
 }
 
 .logo-text small {
-    font-size: 0.7rem;
-    color: var(--primary);
+    font-size: 0.75rem;
+    color: var(--mid-gray);
     font-weight: 600;
+    font-family: "Merriweather", serif;
 }
 
 .desktop-nav {
@@ -252,7 +264,7 @@ main {
     font-family: "Playfair Display", serif;
     font-size: clamp(2.4rem, 6vw, 3.8rem);
     line-height: 1.2;
-    color: var(--text);
+    color: var(--black);
     font-weight: 700;
 }
 
@@ -262,17 +274,17 @@ main {
 }
 
 .hero-tagline {
-    font-size: 1.2rem;
-    color: var(--primary);
+    font-size: 1.1rem;
+    color: var(--mid-gray);
     font-weight: 600;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
 }
 
 .hero-copy {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     color: var(--muted);
     line-height: 1.7;
-    max-width: 500px;
+    max-width: 520px;
 }
 
 .hero-actions {
@@ -682,12 +694,17 @@ footer a:hover {
     border-radius: 8px;
     display: grid;
     place-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all 0.2s;
+    background: transparent;
+    color: var(--gris-pizarra);
+    transition: all 0.18s ease;
+    border: 1px solid rgba(255,255,255,0.06);
 }
 
 .social-links a:hover {
-    background: var(--primary);
+    color: var(--dorado-arena);
+    transform: translateY(-3px);
+    background: rgba(200,154,58,0.06);
+    border-color: rgba(200,154,58,0.18);
 }
 
 .social-links svg {
