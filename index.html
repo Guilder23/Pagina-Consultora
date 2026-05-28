@@ -383,6 +383,7 @@
             </div>
         </section>
 
+        <!--
         <section class="equipo" id="equipo">
             <div class="section-header">
                 <p class="eyebrow">Nuestro equipo</p>
@@ -419,15 +420,71 @@
                 </article>
             </div>
         </section>
+        -->
 
-        <section class="cta">
+        <!-- <section class="cta">
             <h2>¿Listo para transformar tu negocio?</h2>
             <p>Contacta con nuestro equipo para una asesoría sin compromiso</p>
             <button class="btn btn-primary btn-large" type="button">Solicitar Consulta</button>
+        </section> -->
+
+        <section class="contact-section" id="contacto">
+            <div class="section-header">
+                <p class="eyebrow">Contacto directo</p>
+                <h2>Solicita una asesoría</h2>
+                <p class="section-subtitle">Completa tus datos y envía tu solicitud al WhatsApp ejecutivo.</p>
+            </div>
+
+            <div class="contact-layout">
+                <article class="contact-panel contact-details">
+                    <h3>Atención ejecutiva</h3>
+                    <p>Cuéntanos qué necesitas y te responderemos con una propuesta clara, rápida y profesional.</p>
+                    <ul>
+                        <li>Consultoría legal, contable y de RRHH</li>
+                        <li>Atención personalizada para empresas</li>
+                        <li>Respuesta directa por WhatsApp</li>
+                    </ul>
+                </article>
+
+                <form class="contact-panel contact-form" id="contactForm">
+                    <div class="form-grid">
+                        <label>
+                            <span>Nombre completo</span>
+                            <input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required>
+                        </label>
+                        <label>
+                            <span>Empresa</span>
+                            <input type="text" name="empresa" id="empresa" placeholder="Nombre de tu empresa" required>
+                        </label>
+                        <label>
+                            <span>WhatsApp</span>
+                            <input type="tel" name="telefono" id="telefono" placeholder="Ej. 7XXXXXXX" required>
+                        </label>
+                        <label>
+                            <span>Servicio de interés</span>
+                            <select name="servicio" id="servicio" required>
+                                <option value="" selected disabled>Selecciona una opción</option>
+                                <option>Área Legal y Corporativa</option>
+                                <option>Área Contable y Tributaria</option>
+                                <option>Gestión del Talento Humano</option>
+                                <option>Servicios Integrados</option>
+                                <option>Asesoría general</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <label class="full-width">
+                        <span>Cuéntanos tu necesidad</span>
+                        <textarea name="mensaje" id="mensaje" rows="5" placeholder="Describe brevemente lo que necesitas" required></textarea>
+                    </label>
+
+                    <button class="btn btn-primary btn-large" type="submit">Enviar por WhatsApp</button>
+                </form>
+            </div>
         </section>
     </main>
 
-    <footer id="contacto">
+    <footer>
         <div class="footer-grid">
             <div>
                 <h3>SINERGO GESTIÓN CORPORATIVA S.R.L.</h3>
@@ -472,6 +529,12 @@
             <p>&copy; 2026 SINERGO GESTIÓN CORPORATIVA S.R.L. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/59168440201?text=Hola%2C%20quiero%20solicitar%20una%20asesor%C3%ADa%20con%20SINERGO." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <span class="whatsapp-float-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.44 0 .05 5.38.05 12.01c0 2.11.55 4.18 1.6 6l-1.7 6.2 6.36-1.67a11.9 11.9 0 0 0 5.74 1.46h.01c6.62 0 12.01-5.38 12.01-12.01 0-3.22-1.25-6.24-3.55-8.51zM12.06 21.98h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.77.99 1.01-3.67-.23-.38a9.87 9.87 0 0 1-1.52-5.29C2.15 6.58 6.52 2.2 12.06 2.2c2.64 0 5.12 1.03 6.98 2.9a9.79 9.79 0 0 1 2.9 6.91c0 5.54-4.38 9.97-9.88 9.97zm5.76-7.42c-.31-.16-1.85-.91-2.14-1.02-.29-.11-.5-.16-.72.16-.21.31-.82 1.02-1 1.23-.18.2-.37.23-.68.08-.31-.16-1.3-.48-2.49-1.53-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.13-.64.13-.13.31-.37.47-.56.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.56-.08-.16-.72-1.73-.99-2.36-.26-.63-.53-.54-.72-.55h-.61c-.21 0-.56.08-.85.39-.29.31-1.1 1.07-1.1 2.6s1.13 3.01 1.29 3.22c.16.21 2.2 3.36 5.33 4.7.75.32 1.33.51 1.79.65.75.24 1.43.21 1.97.13.6-.09 1.85-.76 2.11-1.49.26-.73.26-1.35.18-1.49-.08-.13-.29-.21-.6-.37z"/></svg>
+        </span>
+    </a>
 
     <script src="script.js"></script>
 </body>

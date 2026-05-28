@@ -10,6 +10,7 @@ const faqAccordion = document.getElementById("faqAccordion");
 const casosTrack = document.getElementById("casosTrack");
 const casosPrev = document.querySelector(".casos-prev");
 const casosNext = document.querySelector(".casos-next");
+const contactForm = document.getElementById("contactForm");
 
 const casosCarouselState = {
     originalCount: 0,
@@ -298,6 +299,30 @@ if (casosTrack && casosPrev && casosNext) {
         casosCarouselState.resizeTimer = window.setTimeout(() => {
             rebuildCasesCarousel();
         }, 120);
+    });
+}
+
+if (contactForm) {
+    contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const nombre = document.getElementById("nombre").value.trim();
+        const empresa = document.getElementById("empresa").value.trim();
+        const telefono = document.getElementById("telefono").value.trim();
+        const servicio = document.getElementById("servicio").value.trim();
+        const mensaje = document.getElementById("mensaje").value.trim();
+
+        const texto = [
+            "Hola, quiero solicitar una asesoría con SINERGO.",
+            `Nombre: ${nombre}`,
+            `Empresa: ${empresa}`,
+            `WhatsApp: ${telefono}`,
+            `Servicio de interés: ${servicio}`,
+            `Necesidad: ${mensaje}`,
+        ].join("\n");
+
+        const whatsappUrl = `https://wa.me/59168440201?text=${encodeURIComponent(texto)}`;
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     });
 }
 

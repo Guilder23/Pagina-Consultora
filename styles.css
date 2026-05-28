@@ -776,8 +776,8 @@ main {
     width: 100vw;
     border-radius: 28px;
     background:
-        radial-gradient(circle at top left, rgba(200, 154, 58, 0.12), transparent 34%),
-        linear-gradient(180deg, #071327 0%, #0a1730 100%);
+        radial-gradient(circle at top left, rgba(200, 154, 58, 0.10), transparent 34%),
+        linear-gradient(180deg, #f4f4f2 0%, #e6e6e2 100%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
@@ -786,11 +786,11 @@ main {
 }
 
 .casos .eyebrow {
-    color: rgba(200, 154, 58, 0.95);
+    color: var(--dorado-arena);
 }
 
 .casos .section-header h2 {
-    color: #ffffff;
+    color: var(--gris-pizarra);
 }
 
 .casos-carousel {
@@ -824,7 +824,7 @@ main {
     display: grid;
     place-items: center;
     cursor: pointer;
-    color: #ffffff;
+    color: var(--gris-pizarra);
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -841,7 +841,7 @@ main {
 
 .casos-nav:hover {
     background: transparent;
-    opacity: 0.8;
+    opacity: 0.7;
     transform: translateY(-50%) scale(1.03);
 }
 
@@ -860,12 +860,12 @@ main {
 }
 
 .caso-card {
-    background: linear-gradient(180deg, rgba(12, 23, 45, 0.98) 0%, rgba(7, 16, 33, 0.98) 100%);
-    border: 1px solid rgba(109, 138, 190, 0.18);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f7f6 100%);
+    border: 1px solid rgba(83, 86, 90, 0.10);
     border-radius: 24px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     min-height: 100%;
@@ -873,8 +873,8 @@ main {
 
 .caso-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(200, 154, 58, 0.35);
-    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.28);
+    border-color: rgba(200, 154, 58, 0.45);
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.12);
 }
 
 .caso-image {
@@ -906,18 +906,18 @@ main {
     font-size: 1.28rem;
     line-height: 1.25;
     margin-bottom: 0;
-    color: #ffffff;
+    color: var(--gris-pizarra);
 }
 
 .caso-industry {
-    color: rgba(200, 154, 58, 0.95);
+    color: var(--dorado-arena);
     font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 0;
 }
 
 .caso-content p {
-    color: rgba(232, 237, 246, 0.78);
+    color: var(--muted);
     line-height: 1.6;
     margin-bottom: 0;
 }
@@ -930,12 +930,160 @@ main {
 }
 
 .caso-metrics span {
-    background: rgba(255, 255, 255, 0.06);
-    color: #ffffff;
+    background: rgba(83, 86, 90, 0.08);
+    color: var(--gris-pizarra);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+.contact-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f4f4f2 100%);
+    padding: 40px 24px;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    margin: 32px 0;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.contact-panel {
+    background: var(--white);
+    border: 1px solid rgba(83, 86, 90, 0.10);
+    border-radius: 18px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+    padding: 18px;
+}
+
+.contact-details h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.contact-details p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.contact-details ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    color: var(--gris-pizarra);
+    font-weight: 600;
+}
+
+.contact-details li::before {
+    content: "•";
+    color: var(--dorado-arena);
+    margin-right: 8px;
+}
+
+.contact-form {
+    display: grid;
+    gap: 14px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.contact-form label {
+    display: grid;
+    gap: 6px;
+}
+
+.contact-form span {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--gris-pizarra);
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    border: 1px solid rgba(83, 86, 90, 0.16);
+    background: #ffffff;
+    color: var(--text);
+    border-radius: 12px;
+    padding: 11px 14px;
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 108px;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: rgba(200, 154, 58, 0.8);
+    box-shadow: 0 0 0 4px rgba(200, 154, 58, 0.12);
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.contact-form .btn {
+    justify-self: start;
+}
+
+.whatsapp-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    border-radius: 50%;
+    background: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 16px 30px rgba(37, 211, 102, 0.28);
+    font-weight: 700;
+}
+
+.whatsapp-float span:last-child {
+    display: none;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.whatsapp-float-icon {
+    width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+}
+
+.whatsapp-float-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
 }
 
 .testimonios {
@@ -1441,6 +1589,36 @@ footer a:hover {
     .testimonios-carousel,
     .equipo-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-section {
+        padding: 24px 14px;
+        margin: 24px 0;
+        border-radius: 20px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-panel {
+        padding: 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form .btn {
+        width: 100%;
+        justify-self: stretch;
+    }
+
+    .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 54px;
+        height: 54px;
     }
 
     .casos {
