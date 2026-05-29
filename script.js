@@ -77,27 +77,62 @@ function updateActiveNav() {
 
 window.addEventListener("scroll", updateActiveNav);
 
-// Animación de entrada para elementos
+// Animación de entrada para títulos, imágenes y tarjetas
 function animateOnScroll() {
+    const revealSelectors = [
+        ".hero-title",
+        ".hero-tagline",
+        ".hero-copy",
+        ".hero-image",
+        ".section-header .eyebrow",
+        ".section-header h2",
+        ".section-subtitle",
+        ".nosotros-visual img",
+        ".faq-media",
+        ".testimonial-card",
+        ".contact-panel",
+        ".highlight-card",
+        ".team-card"
+    ];
+
+    const elements = [...new Set(revealSelectors.flatMap((selector) => Array.from(document.querySelectorAll(selector))))];
+
+    if (!elements.length) {
+        return;
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        elements.forEach((element) => {
+            element.classList.add("reveal", "is-visible");
+        });
+        return;
+    }
+
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.14,
+        rootMargin: "0px 0px -6% 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll(".service-card, .caso-card, .team-card, .testimonial-card").forEach((el) => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-        observer.observe(el);
+    elements.forEach((element, index) => {
+        element.classList.add("reveal");
+
+        if (element.matches(".hero-image, .nosotros-visual img, .faq-media")) {
+            element.classList.add("reveal-image");
+        }
+
+        element.style.transitionDelay = `${Math.min(index * 50, 360)}ms`;
+        observer.observe(element);
     });
 }
 
