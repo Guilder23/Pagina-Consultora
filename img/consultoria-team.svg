@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
-  <rect width="100%" height="100%" fill="#E9ECEB"/>
-  <g fill="#cfd3d2" font-family="Merriweather, serif" font-size="48">
-    <text x="50%" y="45%" text-anchor="middle">Imagen de equipo</text>
-    <text x="50%" y="55%" text-anchor="middle" font-size="28">(placeholder SVG)</text>
-  </g>
-</svg>
