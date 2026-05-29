@@ -1228,7 +1228,7 @@ main {
 .testimonios {
     background: linear-gradient(135deg, rgba(20, 28, 38, 0.98), rgba(11, 16, 24, 0.98));
     color: white;
-    padding: 80px max(20px, calc((100vw - 1200px) / 2));
+    padding: 56px max(20px, calc((100vw - 1200px) / 2));
     border-radius: 20px;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
@@ -1247,46 +1247,67 @@ main {
     color: white;
 }
 
+
 .testimonios-carousel {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px);
-    padding: 32px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(6px);
+    padding: 18px;
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
 }
 
 .testimonial-card:hover {
-    background: rgba(255, 255, 255, 0.10);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.testimonial-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    object-fit: cover;
+    flex: 0 0 64px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+    border: 2px solid rgba(255,255,255,0.05);
+}
+
+.testimonial-body {
+    flex: 1 1 auto;
 }
 
 .stars {
     color: #ffc107;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
 }
 
 .testimonial-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin: 0 0 12px 0;
 }
 
 .testimonial-author strong {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    font-size: 0.98rem;
 }
 
 .testimonial-author small {
     opacity: 0.9;
+    font-size: 0.86rem;
 }
 
 .equipo-grid {
