@@ -337,15 +337,30 @@ main {
 }
 
 .hero {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     min-height: calc(100vh - 76px);
-    padding: 56px 0 30px;
-    color: #f4f6f8;
+    padding: 80px 0;
+    color: #ffffff;
     position: relative;
+}
+
+.hero-decorative-line {
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    height: 120px;
+    width: 3px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #f97316,
+        #f97316 10px,
+        transparent 10px,
+        transparent 20px
+    );
 }
 
 .hero::before {
@@ -378,11 +393,13 @@ main {
 }
 
 .hero-title {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(2.4rem, 6vw, 3.8rem);
-    line-height: 1.2;
+    font-family: "Cinzel", serif;
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    line-height: 1.1;
     color: #ffffff;
     font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .hero-title .accent {
@@ -392,16 +409,19 @@ main {
 
 .hero-tagline {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
-    letter-spacing: 0.2px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .hero-copy {
     font-size: 1.02rem;
     color: rgba(255, 255, 255, 0.74);
     line-height: 1.7;
-    max-width: 520px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .hero-actions {
@@ -409,6 +429,7 @@ main {
     gap: 16px;
     flex-wrap: wrap;
     margin-top: 12px;
+    justify-content: center;
 }
 
 .hero-actions .btn {
@@ -420,24 +441,25 @@ main {
 }
 
 .hero-actions .btn-primary {
-    background: linear-gradient(135deg, #6b7077, #474d54);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    background: #4b5563; /* Color plomo / slate-600 */
+    border: 1px solid #4b5563;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
     color: #ffffff;
 }
 
 .hero-actions .btn-primary:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+    background: #374151; /* Slate-700 */
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
 }
 
 .hero-actions .btn-outline {
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    border: 1.5px solid #ffffff;
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.03);
+    background: transparent;
 }
 
 .hero-actions .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .hero-stats {
@@ -465,77 +487,9 @@ main {
     color: rgba(255, 255, 255, 0.72);
 }
 
-.hero-image img {
-    width: 100%;
-    display: block;
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
-    filter: brightness(0.7) contrast(1.02) saturate(0.9);
-}
-
-.hero-image {
-    position: relative;
-    display: grid;
-    align-items: center;
-}
-
-.hero-badges {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.hero-badge {
-    position: absolute;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: rgba(11, 19, 32, 0.72);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: #ffffff;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
-    backdrop-filter: blur(8px);
-    max-width: max-content;
-}
-
-.hero-badge::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--dorado-arena);
-    box-shadow: 0 0 0 6px rgba(200, 154, 58, 0.12);
-}
-
-.hero-badge-top-left {
-    top: -12px;
-    left: -12px;
-}
-
-.hero-badge-top-right {
-    top: 18px;
-    right: -18px;
-}
-
-.hero-badge-middle-right {
-    top: 50%;
-    right: -28px;
-    transform: translateY(-50%);
-}
-
-.hero-badge-bottom-left {
-    bottom: 18px;
-    left: -18px;
-}
-
-.hero-badge-bottom-right {
-    bottom: -10px;
-    right: 42px;
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
 }
 
 .section-header {
@@ -1507,12 +1461,64 @@ footer a:hover {
     fill: currentColor;
 }
 
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
 .footer-bottom {
-    text-align: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 32px;
+    padding: 24px max(20px, calc((100vw - 1200px) / 2));
     margin-top: 40px;
-    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-bottom-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom-grid a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-style: italic;
+}
+
+.footer-bottom-grid a:hover {
+    color: var(--dorado-arena);
+}
+
+.footer-bottom-center p {
+    margin: 0;
+}
+
+.footer-bottom-right p {
+    margin: 0;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .footer-bottom-grid {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
 }
 
 .sidebar {
