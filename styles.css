@@ -58,10 +58,12 @@ body {
     opacity: 0.9;
 }
 
-.header {
-    position: sticky;
+header {
+    position: fixed;
+
     top: 0;
     z-index: 20;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,6 +91,22 @@ body {
     opacity: 0;
     pointer-events: none;
 }
+
+/* Offset para anchors con header fijo */
+:root {
+    --header-height: 76px;
+}
+
+html {
+    scroll-padding-top: var(--header-height);
+}
+
+/* Evitar que el contenido inicial quede tapado por el header fijo */
+main {
+    padding-top: var(--header-height);
+}
+
+
 
 .header.is-stuck .logo-icon {
     width: 36px;
@@ -321,8 +339,13 @@ main {
     flex: 1 0 auto;
 }
 
+:root {
+    --header-height: 76px;
+}
+
 .hero {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: start;
@@ -1386,11 +1409,49 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 40px;
+    grid-template-columns: 1fr 0.65fr 0.85fr 1fr;
+    gap: 28px;
     max-width: 1200px;
     margin: 0 auto;
 }
+
+/* Dejar “Navegación” más angosta y “Contacto” más ancha */
+footer .footer-grid > div:nth-child(2) {
+    max-width: 100%;
+}
+
+footer .footer-grid > div:nth-child(3) {
+    max-width: 100%;
+}
+
+/* Asegurar que el bloque de Navegación no se desborde y mantenga el listado en columna */
+footer .footer-grid > div:nth-child(2) {
+    overflow-wrap: anywhere;
+}
+
+footer .footer-grid > div:nth-child(2) a {
+    display: block;
+    width: fit-content;
+}
+
+
+/* Estilo para que el mail largo no se corte */
+footer .footer-grid > div:nth-child(3) a[href^="mailto:"] {
+    word-break: break-word;
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* En celular: “Casa Matriz” debajo de “Contacto” */
+    footer .footer-grid > div:nth-child(4) {
+        grid-column: 1 / -1;
+    }
+}
+
+
 
 footer h3 {
     font-size: 1.1rem;
@@ -1402,6 +1463,24 @@ footer p {
     line-height: 1.7;
     margin-bottom: 12px;
 }
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.footer-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.footer-contact p {
+    margin-bottom: 8px;
+}
+
 
 footer a {
     color: rgba(255, 255, 255, 0.74);
