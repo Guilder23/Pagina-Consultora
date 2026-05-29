@@ -1381,11 +1381,32 @@ footer .footer-grid > div:nth-child(3) a[href^="mailto:"] {
 @media (max-width: 900px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 40px 20px;
     }
 
-    /* En celular: “Casa Matriz” debajo de “Contacto” */
+    footer .footer-grid > div:nth-child(1) {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    footer .footer-grid > div:nth-child(1) .footer-logo-container {
+        justify-content: center;
+    }
+
+    footer .footer-grid > div:nth-child(1) .social-links {
+        justify-content: center;
+    }
+
+    /* Navegación y Contacto lado a lado */
+    footer .footer-grid > div:nth-child(2),
+    footer .footer-grid > div:nth-child(3) {
+        grid-column: span 1;
+    }
+
+    /* En celular: “Casa Matriz” debajo */
     footer .footer-grid > div:nth-child(4) {
         grid-column: 1 / -1;
+        text-align: center;
     }
 }
 
@@ -1522,7 +1543,7 @@ footer a:hover {
 }
 
 .sidebar {
-    display: none;
+    display: flex;
     position: fixed;
     left: 0;
     top: 76px;
@@ -1532,10 +1553,15 @@ footer a:hover {
     border-right: 1px solid var(--line);
     z-index: 19;
     flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    box-shadow: 10px 0 30px rgba(0,0,0,0.1);
 }
 
 .sidebar.active {
-    display: flex;
+    transform: translateX(0);
+    visibility: visible;
 }
 
 .sidebar-top {
@@ -1579,11 +1605,14 @@ footer a:hover {
 }
 
 .sidebar-overlay {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.72);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 18;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    backdrop-filter: blur(2px);
 }
 
 footer a[href^="tel:"],
@@ -1592,7 +1621,8 @@ footer a[href^="mailto:"] {
 }
 
 .sidebar-overlay.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .footer-grid a[href*="google.com/maps"] {
@@ -1653,11 +1683,16 @@ footer a[href^="mailto:"] {
     }
 
     #contactBtn {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
         padding: 0;
         border-radius: 8px;
         justify-content: center;
+    }
+
+    #contactBtn .contact-icon {
+        width: 18px;
+        height: 18px;
     }
 
     .contact-text {
@@ -1680,10 +1715,16 @@ footer a[href^="mailto:"] {
     }
 
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 1.9rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
     }
 
     .hero-copy {
+        font-size: 0.92rem;
         max-width: 100%;
     }
 
@@ -1770,12 +1811,12 @@ footer a[href^="mailto:"] {
     }
 
     .nosotros-content h2 {
-        font-size: 2rem;
+        font-size: 1.7rem;
         margin: 8px 0 14px;
     }
 
     .nosotros-content p {
-        font-size: 0.96rem;
+        font-size: 0.92rem;
         line-height: 1.55;
         margin-bottom: 12px;
     }
@@ -1942,11 +1983,11 @@ footer a[href^="mailto:"] {
     }
 
     .caso-content h3 {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 
     .caso-content p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .caso-metrics {
@@ -1969,10 +2010,10 @@ footer a[href^="mailto:"] {
     }
 
     .service-card h3 {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 
     .service-card p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 }
